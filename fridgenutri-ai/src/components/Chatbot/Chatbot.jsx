@@ -88,10 +88,16 @@ export default function Chatbot({ userData }) {
             const nextDate = new Date(last.date);
             nextDate.setDate(last.date.getDate() + 1);
 
+            const WEEKDAYS = [
+                "Sun", "Mon", "Tue", "Wed",
+                "Thu", "Fri", "Sat"
+            ];
+
             const newDay = {
+                id: nextDate.toISOString().slice(0, 10),
                 date: nextDate,
                 dayNumber: nextDate.getDate(),
-                id: nextDate.toISOString().slice(0, 10),
+                weekday: WEEKDAYS[nextDate.getDay()],   // ✔ Correct weekday
                 photoUrl: null,
                 analysis: null,
                 chosenRecipes: [],
@@ -99,8 +105,9 @@ export default function Chatbot({ userData }) {
 
             return [...prev, newDay];
         });
-        // Automatically switch to the new day
-        setCurrentDayIndex(days.length);
+
+        // ✔ Correct: use functional update to get NEW array length
+        setCurrentDayIndex((prevIdx) => prevIdx + 1);
     };
 
     // Swipe support (only on header)
