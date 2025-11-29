@@ -7,11 +7,17 @@ import DayNavigation from './DayNavigation';
 import UploadForm from './UploadForm';
 import AnalyzedView from './AnalyzedView';
 import { useSwipe } from './hooks/useSwipe';
+import { useEffect } from 'react';
+import { User, X } from 'lucide-react';
+import ProfileScreen from "@/components/ProfileScreen";
+import { useRouter } from 'next/navigation';
 
-export default function Chatbot() {
+export default function Chatbot({userData}) {
     const [days, setDays] = useState(generateInitialDays());
     const [currentDayIndex, setCurrentDayIndex] = useState(0);
     const [isAnalyzing, setIsAnalyzing] = useState(false);
+    const [showProfile, setShowProfile] = useState(false);
+    const router = useRouter();
 
     // Ref для шапки — свайпы будут работать только здесь
     const headerRef = useRef(null);
@@ -96,9 +102,13 @@ export default function Chatbot() {
                 ref={headerRef}
                 className="px-10 py-5 border-b border-white/15 flex items-center justify-between select-none cursor-grab active:cursor-grabbing"
             >
-                <div>
-                    <h1 className="text-3xl font-bold text-white">FridgeNutri Board</h1>
-                </div>
+                {/* Profile Icon - Top Left */}
+                {/*<button*/}
+                {/*    onClick={() => router.push('/profile')}*/}
+                {/*    className="w-12 h-12 rounded-full bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center text-white shadow-lg hover:scale-110 transition-transform"*/}
+                {/*>*/}
+                {/*    <User className="w-7 h-7" />*/}
+                {/*</button>*/}
                 <DayNavigation
                     days={days}
                     currentDayIndex={currentDayIndex}

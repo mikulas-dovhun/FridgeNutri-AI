@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d2219287-b6e2-4e30-a8da-8162741412b7" name="Changes" comment="updated structure">
-      <change beforePath="$PROJECT_DIR$/fridgenutri-ai/src/components/Chatbot/RecipesBranch.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/fridgenutri-ai/src/components/Chatbot/RecipesBranch.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fridgenutri-ai/src/app/profile/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/vision.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/vision.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fridgenutri-ai/src/app/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/fridgenutri-ai/src/app/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fridgenutri-ai/src/components/Chatbot/Chatbot.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/fridgenutri-ai/src/components/Chatbot/Chatbot.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fridgenutri-ai/src/components/Chatbot/RecipesBranch.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/fridgenutri-ai/src/components/Chatbot/RecipesBranch.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +58,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "actions.on.save",
-    "ts.external.directory.path": "D:\\WebStorm 2025.2.5\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "ts.external.directory.path": "/Applications/WebStorm.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
