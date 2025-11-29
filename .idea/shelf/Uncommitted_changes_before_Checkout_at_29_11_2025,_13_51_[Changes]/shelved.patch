@@ -1,0 +1,15 @@
+Index: fridgenutri-ai/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># See https://help.github.com/articles/ignoring-files/ for more about ignoring files.\n\n# dependencies\n/node_modules\n/.pnp\n.pnp.*\n.yarn/*\n!.yarn/patches\n!.yarn/plugins\n!.yarn/releases\n!.yarn/versions\n\n# testing\n/coverage\n\n# next.js\n/.next/\n/out/\n\n# production\n/build\n\n# misc\n.DS_Store\n*.pem\n\n# debug\nnpm-debug.log*\nyarn-debug.log*\nyarn-error.log*\n.pnpm-debug.log*\n\n# env files (can opt-in for committing if needed)\n.env*\n\n# vercel\n.vercel\n\n# typescript\n*.tsbuildinfo\nnext-env.d.ts\n
+===================================================================
+diff --git a/fridgenutri-ai/.gitignore b/fridgenutri-ai/.gitignore
+--- a/fridgenutri-ai/.gitignore	(revision 742f85f36d36485662ce7706359726c2558c26e4)
++++ b/fridgenutri-ai/.gitignore	(date 1764419799318)
+@@ -38,4 +38,4 @@
+ 
+ # typescript
+ *.tsbuildinfo
+-next-env.d.ts
++next-env.d.ts
+\ No newline at end of file
