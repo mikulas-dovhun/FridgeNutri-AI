@@ -10,6 +10,7 @@ export default function Home() {
   const handleAuthComplete = (user) => {
     setUserData(user)
     setIsAuthenticated(true)
+    console.log('✅ User authenticated:', user)
   }
   
   useEffect(() => {
@@ -21,6 +22,6 @@ export default function Home() {
   if (!isAuthenticated) {
     return <AuthScreen onComplete={handleAuthComplete} />
   }
-
-    return <Chatbot userData={userData} />
+  
+  return <HomeScreen userData={userData} />
 }

@@ -15,7 +15,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="Alex" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -56,9 +56,9 @@
     "ts.external.directory.path": "D:\\WebStorm 2025.2.5\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   },
-  "keyToStringList": {
-    "ChangesTree.GroupingKeys": [
-      "repository"
+  &quot;keyToStringList&quot;: {
+    &quot;ChangesTree.GroupingKeys&quot;: [
+      &quot;repository&quot;
     ]
   }
 }]]></component>
@@ -71,7 +71,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-a71380e98a7c-JavaScript-WS-252.28238.10" />
+        <option value="bundled-js-predefined-d6986cc7102b-09060db00ec0-JavaScript-WS-251.26927.40" />
       </set>
     </attachedChunks>
   </component>
@@ -84,8 +84,6 @@
       <updated>1751648016863</updated>
       <workItem from="1751648025543" duration="531000" />
       <workItem from="1764419398865" duration="3862000" />
-      <workItem from="1764425158628" duration="24000" />
-      <workItem from="1764425190563" duration="631000" />
     </task>
     <task id="LOCAL-00001" summary="project setup">
       <option name="closed" value="true" />
@@ -119,7 +117,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="project setup" />
-    <MESSAGE value="updated structure" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated structure" />
+    <MESSAGE value="fixed dashboard" />
+    <MESSAGE value="fixed profile setup" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed profile setup" />
   </component>
 </project>
