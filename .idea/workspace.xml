@@ -5,17 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d2219287-b6e2-4e30-a8da-8162741412b7" name="Changes" comment="project setup">
-      <change afterPath="$PROJECT_DIR$/fridgenutri-ai/src/app/page.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fridgenutri-ai/src/components/auth/AuthScreen.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fridgenutri-ai/src/components/auth/ProfileSetup.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fridgenutri-ai/src/components/auth/RegisterScreen.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fridgenutri-ai/src/components/ui/GlassCard.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fridgenutri-ai/src/lib/utils.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fridgenutri-ai/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/fridgenutri-ai/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fridgenutri-ai/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/fridgenutri-ai/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fridgenutri-ai/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fridgenutri-ai/pnpm-lock.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fridgenutri-ai/src/app/page.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,12 +26,12 @@
     &quot;assignee&quot;: &quot;mikulas-dovhun&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/mikulas-dovhun/FridgeNutri-AI.git&quot;,
-    &quot;accountId&quot;: &quot;ae1eb500-16ec-4ed2-b272-212c3797e4a5&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/mikulas-dovhun/FridgeNutri-AI.git",
+    "accountId": "de25ed4a-9461-464a-9226-1bee5c5e4c46"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -55,8 +45,9 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Miki",
+    "git-widget-placeholder": "#7 on Denys",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -74,7 +65,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-09060db00ec0-JavaScript-WS-251.26927.40" />
+        <option value="bundled-js-predefined-d6986cc7102b-a71380e98a7c-JavaScript-WS-252.28238.10" />
       </set>
     </attachedChunks>
   </component>
@@ -87,6 +78,8 @@
       <updated>1751648016863</updated>
       <workItem from="1751648025543" duration="531000" />
       <workItem from="1764419398865" duration="3862000" />
+      <workItem from="1764425158628" duration="24000" />
+      <workItem from="1764425190563" duration="631000" />
     </task>
     <task id="LOCAL-00001" summary="project setup">
       <option name="closed" value="true" />
