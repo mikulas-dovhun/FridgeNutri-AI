@@ -6,6 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="d2219287-b6e2-4e30-a8da-8162741412b7" name="Changes" comment="project setup">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/vision.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/vision.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fridgenutri-ai/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/fridgenutri-ai/src/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fridgenutri-ai/src/app/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/fridgenutri-ai/src/app/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fridgenutri-ai/src/components/Chatbot.jsx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,12 +30,12 @@
     &quot;assignee&quot;: &quot;mikulas-dovhun&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/mikulas-dovhun/FridgeNutri-AI.git",
-    "accountId": "de25ed4a-9461-464a-9226-1bee5c5e4c46"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/mikulas-dovhun/FridgeNutri-AI.git&quot;,
+    &quot;accountId&quot;: &quot;de25ed4a-9461-464a-9226-1bee5c5e4c46&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -47,13 +51,13 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "#7 on Denys",
+    "git-widget-placeholder": "Alex",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "actions.on.save",
-    "ts.external.directory.path": "/Applications/WebStorm.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external",
+    "ts.external.directory.path": "D:\\WebStorm 2025.2.5\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -62,6 +66,12 @@
     ]
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Aleksandr\WebstormProjects\FridgeNutri-AI\fridgenutri-ai\src" />
+      <recent name="C:\Users\Aleksandr\WebstormProjects\FridgeNutri-AI\fridgenutri-ai\src\components\Chatbot" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
