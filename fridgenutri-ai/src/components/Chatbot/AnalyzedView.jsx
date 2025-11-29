@@ -1,17 +1,9 @@
-// src/components/Chatbot/AnalyzedView.tsx
+// src/components/Chatbot/AnalyzedView.jsx
 import FridgePhoto from './FridgePhoto';
 import IngredientsGrid from './IngredientsGrid';
 import RecipesBranch from './RecipesBranch';
 
-type Props = {
-    photoUrl: string;
-    ingredients: any[];
-    recipes: any[];
-    chosenRecipes: any[];
-    onAddRecipe: (r: any) => void;
-};
-
-export default function AnalyzedView({ photoUrl, ingredients, recipes, chosenRecipes, onAddRecipe }: Props) {
+export default function AnalyzedView({ photoUrl, ingredients, recipes, chosenRecipes, onAddRecipe }) {
     return (
         <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">

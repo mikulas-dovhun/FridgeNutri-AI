@@ -1,5 +1,5 @@
-// src/components/Chatbot/IngredientsGrid.tsx
-export default function IngredientsGrid({ ingredients }: { ingredients: { name: string; amount: string }[] }) {
+// src/components/Chatbot/IngredientsGrid.jsx
+export default function IngredientsGrid({ ingredients }) {
     if (!ingredients || ingredients.length === 0) {
         return <div className="text-gray-400 text-center py-10">No ingredients found</div>;
     }
@@ -7,7 +7,7 @@ export default function IngredientsGrid({ ingredients }: { ingredients: { name: 
     return (
         <div className="bg-white/5 border border-white/15 rounded-3xl p-8 backdrop-blur">
             <h2 className="text-white text-2xl font-bold mb-6">
-                Available ingredients({ingredients.length}):
+                Available ingredients ({ingredients.length}):
             </h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                 {ingredients.map((ing, i) => (

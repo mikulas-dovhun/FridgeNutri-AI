@@ -1,5 +1,5 @@
-// src/components/Chatbot/FridgePhoto.tsx
-export default function FridgePhoto({ url }: { url: string }) {
+// src/components/Chatbot/FridgePhoto.jsx
+export default function FridgePhoto({ url }) {
     return (
         <div className="bg-white/5 border border-white/15 rounded-3xl p-6 backdrop-blur">
             <h2 className="text-white text-xl font-bold mb-4">Photo of Fridge</h2>
