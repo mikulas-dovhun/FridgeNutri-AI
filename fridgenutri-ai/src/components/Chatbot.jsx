@@ -450,7 +450,7 @@ export default function Chatbot() {
             </header>
 
             {/* MAIN AREA */}
-            <main className="relative flex-1 overflow-auto">
+            <main className="relative flex-1 overflow-hidden">
                 {/* Если анализа нет — один большой центрированный блок */}
                 {!hasAnalysis && (
                     <div className="w-full h-full flex items-center justify-center py-10">
@@ -519,7 +519,7 @@ export default function Chatbot() {
                 {/* Если анализ есть — паутинка + drag */}
                 {hasAnalysis && (
                     <motion.div
-                        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+                        className="absolute"
                         drag
                         dragMomentum={false}
                         dragConstraints={{ left: -900, right: 900, top: -600, bottom: 600 }}
