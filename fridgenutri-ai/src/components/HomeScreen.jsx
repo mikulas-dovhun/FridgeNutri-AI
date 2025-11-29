@@ -5,6 +5,7 @@ import { Home, Utensils, ShoppingBag, User, Camera } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import GlassCard from './ui/GlassCard'
 import ProfileScreen from './ProfileScreen'
+import Chatbot from "@/components/Chatbot/Chatbot";
 
 const tabs = [
   { id: 'home', label: 'Home', icon: Home, active: true },
@@ -167,10 +168,7 @@ export default function HomeScreen({ userData }) {
         return renderHomeContent()
       case 'meals':
         return (
-          <div className="space-y-6">
-            <h1 className="text-3xl font-bold text-white">Meals</h1>
-            <p className="text-gray-400">Your personalized meal plans will appear here</p>
-          </div>
+          <Chatbot userData={userData} />
         )
       case 'groceries':
         return (

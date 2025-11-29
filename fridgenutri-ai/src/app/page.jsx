@@ -24,5 +24,5 @@ export default function Home() {
     return <AuthScreen onComplete={handleAuthComplete} />
   }
   
-  return <Chatbot userData={userData} />
+  return <HomeScreen userData={userData} />
 }
