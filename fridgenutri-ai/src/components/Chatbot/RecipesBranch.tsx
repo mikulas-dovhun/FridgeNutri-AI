@@ -17,7 +17,7 @@ function RecipeCard({ recipe, isChosen, onAdd }: { recipe: any; isChosen: boolea
             </div>
             <p className="text-gray-300 text-sm mb-4 line-clamp-3">{recipe.instructions}</p>
             <div className="text-xs text-yellow-400 font-medium">
-                {recipe.macros.calories} ккал • {recipe.macros.protein}г белка
+                {recipe.macros.calories} ccal • {recipe.macros.protein}g protein
             </div>
         </div>
     );
@@ -37,11 +37,11 @@ export default function RecipesBranch({
     return (
         <div className="space-y-6">
             <h2 className="text-white text-3xl font-bold">
-                Рецепты из ваших продуктов ({recipes.length})
+                Suggested recipes: ({recipes.length})
             </h2>
             {chosenRecipes.length > 0 && (
                 <div className="text-emerald-400 font-medium text-lg">
-                    Выбрано в план: {chosenRecipes.length}
+                    Included in plan: {chosenRecipes.length}
                 </div>
             )}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
