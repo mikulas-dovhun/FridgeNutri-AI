@@ -1,15 +1,8 @@
-// src/components/Chatbot/DayNavigation.tsx
+// src/components/Chatbot/DayNavigation.jsx
 import { Plus } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-type DayNavigationProps = {
-    days: any[];
-    currentDayIndex: number;
-    onSwitchDay: (index: number) => void;
-    onAddDay: () => void;
-};
-
-function DayNavigation({ days, currentDayIndex, onSwitchDay, onAddDay }: DayNavigationProps) {
+export default function DayNavigation({ days, currentDayIndex, onSwitchDay, onAddDay }) {
     return (
         <div className="flex items-center gap-2 select-none">
             {days.map((day, idx) => (
@@ -33,5 +26,3 @@ function DayNavigation({ days, currentDayIndex, onSwitchDay, onAddDay }: DayNavi
         </div>
     );
 }
-
-export default DayNavigation;

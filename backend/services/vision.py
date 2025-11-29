@@ -56,7 +56,7 @@ async def analyze_fridge_image(image_bytes: bytes) -> dict:
             
             RULES:
             - List EVERY visible food item with realistic quantity
-            - Create 2–3 realistic recipes using only what you see
+            - Create 5–12 realistic recipes using only what you see
             - NEVER return empty arrays unless the fridge is truly empty
             - Only valid JSON, nothing else
             """},

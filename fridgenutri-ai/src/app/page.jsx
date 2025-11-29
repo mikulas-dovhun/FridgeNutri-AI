@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react'
 import AuthScreen from '@/components/auth/AuthScreen'
 import Chatbot from '@/components/Chatbot/Chatbot'
+import HomeScreen from "@/components/HomeScreen";
 
 export default function Home() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -23,5 +24,5 @@ export default function Home() {
     return <AuthScreen onComplete={handleAuthComplete} />
   }
   
-  return <HomeScreen userData={userData} />
+  return <Chatbot userData={userData} />
 }

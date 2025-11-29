@@ -1,19 +1,14 @@
-// src/components/Chatbot/UploadForm.tsx
+// src/components/Chatbot/UploadForm.jsx
 'use client';
 
 import { Upload, Trash2, Loader2 } from 'lucide-react';
 import { useState } from 'react';
 
-type UploadFormProps = {
-    onAnalyze: (file: File, previewUrl: string) => void;
-    isLoading: boolean;
-};
+export default function UploadForm({ onAnalyze, isLoading }) {
+    const [file, setFile] = useState(null);
+    const [preview, setPreview] = useState(null);
 
-export default function UploadForm({ onAnalyze, isLoading }: UploadFormProps) {
-    const [file, setFile] = useState<File | null>(null);
-    const [preview, setPreview] = useState<string | null>(null);
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e) => {
         const selected = e.target.files?.[0];
         if (!selected) return;
 

@@ -1,7 +1,9 @@
-// src/components/Chatbot/RecipesBranch.tsx
+// src/components/Chatbot/RecipesBranch.jsx
 import { Plus, Check } from 'lucide-react';
 
-function RecipeCard({ recipe, isChosen, onAdd }: { recipe: any; isChosen: boolean; onAdd: () => void }) {
+function RecipeCard({ recipe, isChosen, onAdd }) {
+    console.log(recipe.macros)
+
     return (
         <div className="bg-white/5 border border-white/15 rounded-2xl p-6 backdrop-blur hover:bg-white/10 transition-all">
             <div className="flex items-start justify-between mb-4">
@@ -17,22 +19,14 @@ function RecipeCard({ recipe, isChosen, onAdd }: { recipe: any; isChosen: boolea
             </div>
             <p className="text-gray-300 text-sm mb-4 line-clamp-3">{recipe.instructions}</p>
             <div className="text-xs text-yellow-400 font-medium">
-                {recipe.macros.calories} ccal • {recipe.macros.protein}g protein
+                {recipe.macros.calories} ccal • {recipe.macros.protein}g protein • {recipe.macros.fat}g fat • {recipe.macros.carbs}g carbs
             </div>
         </div>
     );
 }
 
-export default function RecipesBranch({
-                                          recipes,
-                                          chosenRecipes,
-                                          onAddRecipe,
-                                      }: {
-    recipes: any[];
-    chosenRecipes: any[];
-    onAddRecipe: (r: any) => void;
-}) {
-    const chosenNames = new Set(chosenRecipes.map((r: any) => r.name));
+export default function RecipesBranch({ recipes, chosenRecipes, onAddRecipe }) {
+    const chosenNames = new Set(chosenRecipes.map(r => r.name));
 
     return (
         <div className="space-y-6">
