@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d2219287-b6e2-4e30-a8da-8162741412b7" name="Changes" comment="correct dish analyzer endpoint logic">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/analyze.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/analyze.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fridgenutri-ai/src/components/HomeScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/fridgenutri-ai/src/components/HomeScreen.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fridgenutri-ai/src/components/ProgressScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/fridgenutri-ai/src/components/ProgressScreen.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,12 +35,12 @@
     &quot;assignee&quot;: &quot;mikulas-dovhun&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/mikulas-dovhun/FridgeNutri-AI.git",
-    "accountId": "075c6c37-9957-4f41-84d3-6d15e000efec"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/mikulas-dovhun/FridgeNutri-AI.git&quot;,
+    &quot;accountId&quot;: &quot;075c6c37-9957-4f41-84d3-6d15e000efec&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
