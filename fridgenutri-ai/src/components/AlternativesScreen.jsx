@@ -3,8 +3,8 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Leaf, X } from 'lucide-react';
-import UploadForm from './UploadForm'; // Correct import path assuming folder structure
+import { Leaf, X, AlertTriangle } from 'lucide-react';
+import UploadForm from './UploadForm';
 
 const AlternativesScreen = () => {
     const [photoUrl, setPhotoUrl] = useState(null);
@@ -27,14 +27,20 @@ const AlternativesScreen = () => {
                 body: fd,
             });
 
-            if (!res.ok) throw new Error(`Server error: ${res.status}`);
+            if (!res.ok) {
+                throw new Error(`Server responded with ${res.status}`);
+            }
 
             const data = await res.json();
-            if (data.error) throw new Error(data.error);
+
+            // Handle backend errors or invalid responses
+            if (data.error || !data.detected_product) {
+                throw new Error(data.error || 'Could not recognize the product');
+            }
 
             setResult(data);
         } catch (err) {
-            setError(err.message || 'Analysis failed');
+            setError(err.message || 'Something went wrong');
         } finally {
             setIsAnalyzing(false);
         }
@@ -47,7 +53,7 @@ const AlternativesScreen = () => {
         setIsAnalyzing(false);
     };
 
-    const Card = ({ children, className = "" }) => (
+    const Card = ({ children, className = '' }) => (
         <div className={`rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl ${className}`}>
             {children}
         </div>
@@ -64,7 +70,7 @@ const AlternativesScreen = () => {
                     </h1>
                 </div>
 
-                {(photoUrl || result) && (
+{/*                {(photoUrl || result || error) && (
                     <button
                         onClick={reset}
                         className="flex items-center gap-2 px-4 py-2 bg-red-600/80 hover:bg-red-700 rounded-xl transition"
@@ -72,13 +78,14 @@ const AlternativesScreen = () => {
                         <X className="w-5 h-5" />
                         New Product
                     </button>
-                )}
+                )}*/}
             </header>
 
             <main className="flex-1 overflow-y-auto p-6 pb-24">
                 <div className="max-w-4xl mx-auto">
 
-                    {!photoUrl && !result && (
+                    {/* Initial upload screen */}
+                    {!photoUrl && !result && !error && (
                         <div className="mt-8">
                             <h2 className="text-center text-3xl font-bold mb-4">
                                 Find healthier swaps
@@ -86,29 +93,54 @@ const AlternativesScreen = () => {
                             <p className="text-center text-gray-300 text-lg mb-10 max-w-2xl mx-auto">
                                 Take a photo of any packaged food, oil, snack, or ingredient
                             </p>
-
-                            <UploadForm
-                                onAnalyze={handleAnalyze}
-                                isLoading={isAnalyzing}
-                            />
+                            <UploadForm onAnalyze={handleAnalyze} isLoading={isAnalyzing} />
                         </div>
                     )}
 
-
+                    {/* Show preview + loading state (UploadForm handles spinner itself) */}
                     {isAnalyzing && photoUrl && (
                         <div className="mt-8">
-                            <UploadForm
-                                onAnalyze={handleAnalyze} // Not used during loading
-                                isLoading={isAnalyzing}
-                            />
+                            <UploadForm onAnalyze={() => {}} isLoading={true} />
                         </div>
                     )}
 
+                    {/* Error state — shown when analysis failed or product not recognized */}
+                    {error && !isAnalyzing && (
+                        <div className="mt-12">
+                            <Card className="p-12 text-center">
+                                <motion.div
+                                    initial={{ scale: 0.9, opacity: 0 }}
+                                    animate={{ scale: 1, opacity: 1 }}
+                                    className="space-y-6"
+                                >
+                                    <div className="w-24 h-24 mx-auto bg-orange-500/20 rounded-full flex items-center justify-center">
+                                        <AlertTriangle className="w-12 h-12 text-orange-400" />
+                                    </div>
 
+                                    <h3 className="text-2xl font-bold text-orange-300">
+                                        Sorry, we couldn't analyze this photo
+                                    </h3>
+
+                                    <p className="text-lg text-gray-300 max-w-md mx-auto leading-relaxed">
+                                        The product might be too blurry, poorly lit, or not clearly visible.
+                                        Please try uploading a different image with better lighting and a clear view of the product.
+                                    </p>
+
+                                    <button
+                                        onClick={reset}
+                                        className="mt-6 px-8 py-4 bg-gradient-to-r from-orange-600 to-red-600 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition"
+                                    >
+                                        Try Another Photo
+                                    </button>
+                                </motion.div>
+                            </Card>
+                        </div>
+                    )}
+
+                    {/* Success: show result */}
                     {result && !isAnalyzing && (
                         <div className="space-y-8 mt-8">
-
-
+                            {/* Product photo with remove button */}
                             {photoUrl && (
                                 <div className="relative max-w-md mx-auto">
                                     <img
@@ -125,7 +157,7 @@ const AlternativesScreen = () => {
                                 </div>
                             )}
 
-
+                            {/* Product assessment */}
                             <Card className="text-center py-8">
                                 <h2 className="text-3xl font-bold text-orange-300 mb-2">
                                     {result.detected_product}
@@ -149,7 +181,7 @@ const AlternativesScreen = () => {
                                 <p className="text-gray-300 mt-4 max-w-2xl mx-auto leading-relaxed">{result.why}</p>
                             </Card>
 
-
+                            {/* Alternatives */}
                             <div>
                                 <h3 className="text-2xl font-bold text-center mb-8 text-emerald-400">
                                     {result.assessment === 'great'
@@ -197,13 +229,6 @@ const AlternativesScreen = () => {
                                 </div>
                             </div>
                         </div>
-                    )}
-
-
-                    {error && (
-                        <Card className="p-8 text-center text-red-400 mt-8">
-                            <p className="text-xl">Error: {error}</p>
-                        </Card>
                     )}
                 </div>
             </main>

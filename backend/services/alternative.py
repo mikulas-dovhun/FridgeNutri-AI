@@ -84,7 +84,6 @@ Rules:
     try:
         result = json.loads(cleaned)
 
-        # Защита от кривого ответа
         result.setdefault("assessment", "moderate")
         result.setdefault("message", "Product analyzed.")
         result.setdefault("why", "")
