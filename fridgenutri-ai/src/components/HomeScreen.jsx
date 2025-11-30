@@ -1,26 +1,31 @@
 'use client'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Home, Utensils, ShoppingBag, User, ChartLine } from 'lucide-react'
+import { Home, Utensils, ShoppingBag, User, ChartLine, Leaf } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import GlassCard from './ui/GlassCard'
 import ProfileScreen from './ProfileScreen'
 import Chatbot from "@/components/Chatbot/Chatbot";
 import ProgressScreen from "@/components/ProgressScreen";
 import DishChatbot from "@/components/DishToShop/DishChatbot";
+import Alternatives from "@/components/AlternativesScreen";
 
 const tabs = [
     { id: 'home', label: 'Home', icon: Home, active: true },
     { id: 'meals', label: 'Meals', icon: Utensils },
     { id: 'groceries', label: 'Groceries', icon: ShoppingBag },
-    { id: 'progress', label: 'Progress', icon: ChartLine },  // ⭐ NEW TAB
+    { id: 'progress', label: 'Progress', icon: ChartLine },
+    { id: 'alternatives', label: 'Alternatives', icon: Leaf },
     { id: 'profile', label: 'Profile', icon: User }
+
 ]
 
 
 export default function HomeScreen({ userData }) {
   const [activeTab, setActiveTab] = useState('home')
-  
+
+  let meals = localStorage.getItem("countItems") || 0
+
   const renderHomeContent = () => (
     <div className="space-y-8">
       {/* Welcome Hero */}
@@ -45,12 +50,12 @@ export default function HomeScreen({ userData }) {
           </div>
         </motion.div>
       </GlassCard>
-      
+
       {/* Quick Stats */}
       <GlassCard className="grid grid-cols-2 lg:grid-cols-4 gap-6">
         {[
           { label: 'Daily Calories', value: '2,100', icon: '🔥', color: 'from-orange-500 to-red-600' },
-          { label: 'Meals Planned', value: '5', icon: '🍽️', color: 'from-emerald-500 to-teal-600' },
+            { label: 'Meals Planned', value: meals, icon: '🍽️', color: 'from-emerald-500 to-teal-600' },
           { label: 'Groceries Needed', value: '3', icon: '🛒', color: 'from-blue-500 to-indigo-600' },
           { label: 'Fridge Score', value: '92%', icon: '⭐', color: 'from-purple-500 to-pink-600' }
         ].map((stat, index) => (
@@ -174,7 +179,7 @@ export default function HomeScreen({ userData }) {
         return (
           <Chatbot userData={userData} />
         )
-      case 'groceries':
+        case 'groceries':
         return (
           <DishChatbot userData={userData} />
         )
@@ -183,6 +188,8 @@ export default function HomeScreen({ userData }) {
           localStorage.removeItem('fridgeNutriUser')
           window.location.reload()
         }} />
+        case 'alternatives':
+            return <Alternatives />;
         case 'progress':
             const saved = JSON.parse(localStorage.getItem('chatbot_days')) || [];
 
@@ -220,7 +227,7 @@ export default function HomeScreen({ userData }) {
         className="fixed bottom-0 left-0 right-0 bg-white/10 backdrop-blur-3xl border-t border-white/20 z-50"
       >
         <div className="max-w-4xl mx-auto px-6 py-4">
-          <div className="grid grid-cols-5 gap-1">
+          <div className="grid grid-cols-6 gap-1">
             {tabs.map((tab) => {
               const Icon = tab.icon
               return (
