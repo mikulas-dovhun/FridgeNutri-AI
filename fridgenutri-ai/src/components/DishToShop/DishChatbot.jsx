@@ -104,7 +104,7 @@ export default function DishChatbot() {
   
   return (
     // THIS IS THE KEY FIX → full viewport, no parent constraints
-    <div className="fixed inset-0 flex flex-col overflow-hidden bg-gradient-to-br from-pink-950 via-purple-950 to-indigo-950 text-white">
+    <div className="min-h-screen flex flex-col overflow-hidden bg-gradient-to-br from-pink-950 via-purple-950 to-indigo-950 text-white">
       <header
         ref={headerRef}
         className="relative z-10 px-8 py-5 border-b border-white/10 flex justify-between items-center cursor-grab active:cursor-grabbing select-none"

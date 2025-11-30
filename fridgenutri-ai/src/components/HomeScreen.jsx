@@ -20,7 +20,9 @@ const tabs = [
 
 export default function HomeScreen({ userData }) {
   const [activeTab, setActiveTab] = useState('home')
-  
+
+  let meals = localStorage.getItem("countItems") || 0
+
   const renderHomeContent = () => (
     <div className="space-y-8">
       {/* Welcome Hero */}
@@ -45,12 +47,12 @@ export default function HomeScreen({ userData }) {
           </div>
         </motion.div>
       </GlassCard>
-      
+
       {/* Quick Stats */}
       <GlassCard className="grid grid-cols-2 lg:grid-cols-4 gap-6">
         {[
           { label: 'Daily Calories', value: '2,100', icon: '🔥', color: 'from-orange-500 to-red-600' },
-          { label: 'Meals Planned', value: '5', icon: '🍽️', color: 'from-emerald-500 to-teal-600' },
+            { label: 'Meals Planned', value: meals, icon: '🍽️', color: 'from-emerald-500 to-teal-600' },
           { label: 'Groceries Needed', value: '3', icon: '🛒', color: 'from-blue-500 to-indigo-600' },
           { label: 'Fridge Score', value: '92%', icon: '⭐', color: 'from-purple-500 to-pink-600' }
         ].map((stat, index) => (

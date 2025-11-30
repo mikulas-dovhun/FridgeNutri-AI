@@ -3,7 +3,7 @@ import FridgePhoto from './FridgePhoto';
 import IngredientsGrid from './IngredientsGrid';
 import RecipesBranch from './RecipesBranch';
 
-export default function AnalyzedView({ photoUrl, ingredients, recipes, chosenRecipes, onAddRecipe }) {
+export default function AnalyzedView({ photoUrl, ingredients, recipes, chosenRecipes, onAddRecipe, increment }) {
     return (
         <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -16,6 +16,7 @@ export default function AnalyzedView({ photoUrl, ingredients, recipes, chosenRec
                         recipes={recipes}
                         chosenRecipes={chosenRecipes}
                         onAddRecipe={onAddRecipe}
+                        onIncrement={increment}
                     />
                 </div>
             </div>

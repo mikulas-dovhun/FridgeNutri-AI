@@ -1,9 +1,16 @@
 // src/components/Chatbot/RecipesBranch.jsx
 import { Plus, Check } from 'lucide-react';
-import {useState} from "react";
+import { useState } from 'react';
 
 function RecipeCard({ recipe, isChosen, onAdd }) {
-    const [copyIsChosen, setCopyIsChosen] = useState(false)
+    const [localChosen, setLocalChosen] = useState(false);
+
+    const handleAdd = () => {
+        // local UI feedback
+        setLocalChosen(true);
+        // call parent
+        onAdd && onAdd();
+    };
 
     return (
         <div className="bg-white/5 border border-white/15 rounded-2xl p-6 backdrop-blur hover:bg-white/10 transition-all">
@@ -11,57 +18,43 @@ function RecipeCard({ recipe, isChosen, onAdd }) {
                 <h3 className="text-white text-xl font-bold">{recipe.name}</h3>
 
                 <button
-                    onClick={() => {
-                        setCopyIsChosen(true)
-                        onAdd()
-                    }}
+                    onClick={handleAdd}
                     className={`p-3 rounded-full transition-all ${
-                        (isChosen || copyIsChosen )
-                            ? 'bg-emerald-600 text-white'
-                            : 'bg-white/10 hover:bg-white/20 text-gray-300'
+                        (isChosen || localChosen) ? 'bg-emerald-600 text-white' : 'bg-white/10 hover:bg-white/20 text-gray-300'
                     }`}
                 >
-                    {(copyIsChosen || isChosen) ? (
-                        <Check className="w-5 h-5" />
-                    ) : (
-                        <Plus className="w-5 h-5" />
-                    )}
+                    {(isChosen || localChosen) ? <Check className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
                 </button>
             </div>
 
-            <p className="text-gray-300 text-sm mb-4 line-clamp-3">
-                {recipe.instructions}
-            </p>
+            <p className="text-gray-300 text-sm mb-4 line-clamp-3">{recipe.instructions}</p>
 
             <div className="text-xs text-yellow-400 font-medium">
-                {recipe.macros.calories} ccal • {recipe.macros.protein}g protein •{' '}
-                {recipe.macros.fat}g fat • {recipe.macros.carbs}g carbs
+                {recipe.macros?.calories ?? recipe.macro?.calories ?? '—'} ccal • {recipe.macros?.protein ?? recipe.macro?.protein ?? '—'}g protein • {recipe.macros?.fat ?? recipe.macro?.fat ?? '—'}g fat • {recipe.macros?.carbs ?? recipe.macro?.carbs ?? '—'}g carbs
             </div>
         </div>
     );
 }
 
-
-export default function RecipesBranch({ recipes, chosenRecipes, onAddRecipe }) {
-    const chosenNames = new Set(chosenRecipes.map(r => r.name));
+export default function RecipesBranch({ recipes = [], chosenRecipes = [], onAddRecipe, onIncrement }) {
+    const chosenNames = new Set((chosenRecipes || []).map(r => r.name));
 
     return (
         <div className="space-y-6">
-            <h2 className="text-white text-3xl font-bold">
-                Suggested recipes: ({recipes.length})
-            </h2>
-            {chosenRecipes.length > 0 && (
-                <div className="text-emerald-400 font-medium text-lg">
-                    Included in plan: {chosenRecipes.length}
-                </div>
-            )}
+            <h2 className="text-white text-3xl font-bold">Suggested recipes: ({recipes.length})</h2>
+
+            {chosenRecipes.length > 0 && <div className="text-emerald-400 font-medium text-lg">Included in plan: {chosenRecipes.length}</div>}
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {recipes.map((r, i) => (
+                {recipes.map((r) => (
                     <RecipeCard
-                        key={i}
+                        key={r.name || r.id || Math.random()}
                         recipe={r}
                         isChosen={chosenNames.has(r.name)}
-                        onAdd={() => onAddRecipe(r)}
+                        onAdd={() => {
+                            onAddRecipe && onAddRecipe(r);
+                            onIncrement && onIncrement();
+                        }}
                     />
                 ))}
             </div>

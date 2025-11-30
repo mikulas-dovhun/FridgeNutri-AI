@@ -7,111 +7,115 @@ import DayNavigation from './DayNavigation';
 import UploadForm from './UploadForm';
 import AnalyzedView from './AnalyzedView';
 import { useSwipe } from './hooks/useSwipe';
-import { User, X } from 'lucide-react';
+import { RotateCcw } from 'lucide-react';
 
 const STORAGE_KEY_DAYS = 'chatbot_days';
-const STORAGE_KEY_CURRENT_INDEX = 'chatbot_current_day_index';
+const STORAGE_KEY_IDX = 'chatbot_current_day_index';
 
-export default function Chatbot({ userData }) {
+export default function Chatbot() {
+    // ------------- load initial data and revive dates + totals --------------
     const loadInitialData = () => {
         try {
-            const savedDays = localStorage.getItem(STORAGE_KEY_DAYS);
-            const savedIndex = localStorage.getItem(STORAGE_KEY_CURRENT_INDEX);
-            
-            if (savedDays) {
-                const parsed = JSON.parse(savedDays);
-                const revived = parsed.map(day => ({
-                    ...day,
-                    date: new Date(day.date),
+            const saved = localStorage.getItem(STORAGE_KEY_DAYS);
+            const savedIndex = localStorage.getItem(STORAGE_KEY_IDX);
+            if (saved) {
+                const parsed = JSON.parse(saved);
+                const revived = parsed.map(d => ({
+                    ...d,
+                    date: d.date ? new Date(d.date) : new Date(),
+                    totals: d.totals || { calories: 0, protein: 0, carbs: 0, fat: 0 },
+                    chosenRecipes: d.chosenRecipes || [],
                 }));
-                return {
-                    days: revived,
-                    currentIndex: savedIndex ? parseInt(savedIndex, 10) : 0,
-                };
+                return { days: revived, index: savedIndex ? parseInt(savedIndex, 10) : 0 };
             }
         } catch (e) {
-            console.error('Failed to load from localStorage', e);
+            console.warn('Failed to load saved days:', e);
         }
-        
-        return { days: generateInitialDays(), currentIndex: 0 };
+
+        const fresh = generateInitialDays().map(d => ({
+            ...d,
+            totals: { calories: 0, protein: 0, carbs: 0, fat: 0 },
+            chosenRecipes: [],
+        }));
+
+        return { days: fresh, index: 0 };
     };
-    
-    const { days: initialDays, currentIndex: initialIndex } = loadInitialData();
-    
+
+    const { days: initialDays, index: initialIndex } = loadInitialData();
+
     const [days, setDays] = useState(initialDays);
     const [currentDayIndex, setCurrentDayIndex] = useState(initialIndex);
     const [isAnalyzing, setIsAnalyzing] = useState(false);
-    
-    const headerRef = useRef(null);
+
     const currentDay = days[currentDayIndex];
     const analysis = currentDay?.analysis;
-    
-    // Save to localStorage
+    const headerRef = useRef(null);
+
+    // ------------- persist days to localStorage -------------
     useEffect(() => {
         try {
-            const toSave = days.map(day => ({
-                ...day,
-                date: day.date.toISOString(),
+            const toSave = days.map(d => ({
+                ...d,
+                date: d.date instanceof Date ? d.date.toISOString() : d.date,
             }));
             localStorage.setItem(STORAGE_KEY_DAYS, JSON.stringify(toSave));
-            localStorage.setItem(STORAGE_KEY_CURRENT_INDEX, currentDayIndex.toString());
+            localStorage.setItem(STORAGE_KEY_IDX, currentDayIndex.toString());
         } catch (e) {
-            console.error('Failed to save to localStorage', e);
+            console.error('Failed to save days', e);
         }
     }, [days, currentDayIndex]);
-    
-    // Swipe navigation
+
+    // ------------- swipe card navigation -------------
     useSwipe(headerRef, {
-        onSwipeLeft: () => currentDayIndex < days.length - 1 && setCurrentDayIndex(i => i + 1),
-        onSwipeRight: () => currentDayIndex > 0 && setCurrentDayIndex(i => i - 1),
+        onSwipeLeft: () => setCurrentDayIndex(i => Math.min(i + 1, days.length - 1)),
+        onSwipeRight: () => setCurrentDayIndex(i => Math.max(i - 1, 0)),
         threshold: 70,
     });
-    
-    const switchDay = (index) => {
-        if (index >= 0 && index < days.length) setCurrentDayIndex(index);
-    };
-    
-    const handleAddDay = () => {
+
+    const addDay = () => {
         setDays(prev => {
             const last = prev[prev.length - 1];
-            const nextDate = new Date(last.date);
-            nextDate.setDate(last.date.getDate() + 1);
-            
-            const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+            const next = new Date(last.date);
+            next.setDate(next.getDate() + 1);
+            const WEEK = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
             const newDay = {
-                id: nextDate.toISOString().slice(0, 10),
-                date: nextDate,
-                dayNumber: nextDate.getDate(),
-                weekday: WEEKDAYS[nextDate.getDay()],
+                id: next.toISOString().slice(0, 10),
+                date: next,
+                dayNumber: next.getDate(),
+                weekday: WEEK[next.getDay()],
                 photoUrl: null,
                 analysis: null,
                 chosenRecipes: [],
+                totals: { calories: 0, protein: 0, carbs: 0, fat: 0 },
             };
+
             return [...prev, newDay];
         });
+
         setCurrentDayIndex(days.length);
     };
-    
-    const handleAnalyze = async (file, previewUrl) => {
+
+    // ------------- analyze (upload) -------------
+    const analyzeFridge = async (file, previewUrl) => {
         setIsAnalyzing(true);
-        const formData = new FormData();
-        formData.append('file', file);
-        
+        const fd = new FormData();
+        fd.append('file', file);
+
         try {
-            const res = await fetch('http://localhost:8000/analyze', {
-                method: 'POST',
-                body: formData,
-            });
+            const res = await fetch('http://localhost:8000/analyze', { method: 'POST', body: fd });
             const data = await res.json();
             if (data.error) throw new Error(data.error);
-            
+
             setDays(prev => {
                 const copy = [...prev];
+                const day = copy[currentDayIndex];
                 copy[currentDayIndex] = {
-                    ...copy[currentDayIndex],
+                    ...day,
                     photoUrl: previewUrl,
                     analysis: data,
-                    chosenRecipes: copy[currentDayIndex].chosenRecipes || [],
+                    chosenRecipes: day.chosenRecipes || [],
+                    totals: day.totals || { calories: 0, protein: 0, carbs: 0, fat: 0 },
                 };
                 return copy;
             });
@@ -121,62 +125,122 @@ export default function Chatbot({ userData }) {
             setIsAnalyzing(false);
         }
     };
-    
-    const handleAddRecipe = (recipe) => {
+
+    // ------------- reset current day -------------
+    const resetDay = () => {
+        if (!confirm("Clear today's fridge analysis and totals?")) return;
+        setDays(prev => {
+            const copy = [...prev];
+            copy[currentDayIndex] = {
+                ...copy[currentDayIndex],
+                photoUrl: null,
+                analysis: null,
+                chosenRecipes: [],
+                totals: { calories: 0, protein: 0, carbs: 0, fat: 0 },
+            };
+            return copy;
+        });
+    };
+
+    // ------------- add recipe (compute totals) -------------
+    // recipe object should contain recipe.macros = { calories, protein, carbs, fat }
+    const addRecipe = (recipe) => {
         setDays(prev => {
             const copy = [...prev];
             const day = copy[currentDayIndex];
-            if (!day.chosenRecipes) day.chosenRecipes = [];
+
+            // avoid duplicates (by name)
             if (!day.chosenRecipes.some(r => r.name === recipe.name)) {
-                day.chosenRecipes.push(recipe);
+                day.chosenRecipes = [...(day.chosenRecipes || []), recipe];
             }
+
+            // recompute totals from chosenRecipes
+            const totals = (day.chosenRecipes || []).reduce((acc, r) => {
+                const m = r.macros || r.macro || {};
+                acc.calories += Number(m.calories || 0);
+                acc.protein += Number(m.protein || 0);
+                acc.carbs += Number(m.carbs || 0);
+                acc.fat += Number(m.fat || 0);
+                return acc;
+            }, { calories: 0, protein: 0, carbs: 0, fat: 0 });
+
+            day.totals = totals;
+
             return copy;
         });
     };
-    
-    const handleRemoveRecipe = (recipeName) => {
+
+    const removeRecipe = (name) => {
         setDays(prev => {
             const copy = [...prev];
-            copy[currentDayIndex].chosenRecipes = copy[currentDayIndex].chosenRecipes.filter(
-              r => r.name !== recipeName
-            );
+            const day = copy[currentDayIndex];
+            day.chosenRecipes = (day.chosenRecipes || []).filter(r => r.name !== name);
+
+            // recompute totals
+            const totals = (day.chosenRecipes || []).reduce((acc, r) => {
+                const m = r.macros || r.macro || {};
+                acc.calories += Number(m.calories || 0);
+                acc.protein += Number(m.protein || 0);
+                acc.carbs += Number(m.carbs || 0);
+                acc.fat += Number(m.fat || 0);
+                return acc;
+            }, { calories: 0, protein: 0, carbs: 0, fat: 0 });
+
+            day.totals = totals;
             return copy;
         });
     };
-    
+
+    // optional: increment global meal counter in localStorage
+    const incrementMealCounter = () => {
+        const prev = Number(localStorage.getItem('countItems')) || 0;
+        const next = prev + 1;
+        localStorage.setItem('countItems', next.toString());
+    };
+
     return (
-      // THIS IS THE KEY FIX: full viewport, no parent interference
-      <div className="fixed inset-0 flex flex-col bg-gradient-to-br from-indigo-950 via-purple-950 to-blue-950 text-white overflow-hidden">
-          {/* Header – swipe zone */}
-          <header
-            ref={headerRef}
-            className="relative z-10 px-10 py-5 border-b border-white/15 flex items-center justify-between select-none cursor-grab active:cursor-grabbing"
-          >
-              <DayNavigation
-                days={days}
-                currentDayIndex={currentDayIndex}
-                onSwitchDay={switchDay}
-                onAddDay={handleAddDay}
-              />
-          </header>
-          
-          {/* Main content – takes all remaining space */}
-          <main className="flex-1 overflow-y-auto p-8 pb-20">
-              <div className="max-w-5xl mx-auto w-full">
-                  {!analysis ? (
-                    <UploadForm onAnalyze={handleAnalyze} isLoading={isAnalyzing} />
-                  ) : (
-                    <AnalyzedView
-                      photoUrl={currentDay.photoUrl}
-                      ingredients={analysis.ingredients || []}
-                      recipes={analysis.recipes || []}
-                      chosenRecipes={currentDay.chosenRecipes || []}
-                      onAddRecipe={handleAddRecipe}
-                      onRemoveRecipe={handleRemoveRecipe}
-                    />
-                  )}
-              </div>
-          </main>
-      </div>
+        <div className="min-h-screen flex flex-col bg-gradient-to-br from-indigo-950 via-purple-950 to-blue-950 text-white">
+            <header
+                ref={headerRef}
+                className="flex items-center justify-between px-6 py-4 border-b border-white/10 backdrop-blur-lg"
+            >
+                <DayNavigation
+                    days={days}
+                    currentDayIndex={currentDayIndex}
+                    onSwitchDay={setCurrentDayIndex}
+                    onAddDay={addDay}
+                />
+
+                <div className="flex items-center gap-3">
+                    <button
+                        onClick={resetDay}
+                        className="flex items-center gap-2 px-4 py-2 bg-red-600/80 hover:bg-red-700 text-white rounded-xl transition"
+                    >
+                        <RotateCcw className="w-5 h-5" />
+                        Reset
+                    </button>
+                </div>
+            </header>
+
+            <main className="flex-1 overflow-y-auto p-8">
+                <div className="max-w-5xl mx-auto w-full">
+                    {!analysis ? (
+                        <UploadForm onAnalyze={analyzeFridge} isLoading={isAnalyzing} />
+                    ) : (
+                        <AnalyzedView
+                            photoUrl={currentDay.photoUrl}
+                            ingredients={analysis.ingredients || []}
+                            recipes={analysis.recipes || []}
+                            chosenRecipes={currentDay.chosenRecipes || []}
+                            onAddRecipe={(recipe) => {
+                                addRecipe(recipe);
+                                incrementMealCounter();
+                            }}
+                            onRemoveRecipe={removeRecipe}
+                        />
+                    )}
+                </div>
+            </main>
+        </div>
     );
 }
