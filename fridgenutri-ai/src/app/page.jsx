@@ -1,8 +1,8 @@
 'use client'
 import { useState, useEffect } from 'react'
 import AuthScreen from '@/components/auth/AuthScreen'
-import Chatbot from '@/components/Chatbot/Chatbot'
 import HomeScreen from "@/components/HomeScreen";
+import Chatbot from "@/components/Chatbot/Chatbot";
 
 export default function Home() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)

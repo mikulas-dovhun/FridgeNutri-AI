@@ -105,9 +105,6 @@ export default function Chatbot({ userData }) {
 
             return [...prev, newDay];
         });
-
-        // ✔ Correct: use functional update to get NEW array length
-        setCurrentDayIndex((prevIdx) => prevIdx + 1);
     };
 
     // Swipe support (only on header)

@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils'
 import GlassCard from './ui/GlassCard'
 import ProfileScreen from './ProfileScreen'
 import Chatbot from "@/components/Chatbot/Chatbot";
+import DishChatbot from '@/components/DishToShop/DishChatbot';
 
 const tabs = [
   { id: 'home', label: 'Home', icon: Home, active: true },
@@ -168,14 +169,11 @@ export default function HomeScreen({ userData }) {
         return renderHomeContent()
       case 'meals':
         return (
-          <Chatbot userData={userData} />
+          <Chatbot userData={userData}></Chatbot>
         )
       case 'groceries':
         return (
-          <div className="space-y-6">
-            <h1 className="text-3xl font-bold text-white">Groceries</h1>
-            <p className="text-gray-400">Your shopping lists will appear here</p>
-          </div>
+          <DishChatbot userData={userData}></DishChatbot>
         )
       case 'profile':
         return <ProfileScreen userData={userData} onLogout={() => {

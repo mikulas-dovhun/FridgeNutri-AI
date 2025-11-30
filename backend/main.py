@@ -1,19 +1,22 @@
+# backend/main.py
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routes import analyze
+from routes.analyze import router as fridge_router
+from routes.dish import router as dish_router  # Fixed import
 
-app = FastAPI(title="FridgeNutri AI", version="1.0")
+app = FastAPI(title="FridgeNutri AI + DishToShop", version="1.0")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # In production: only your frontend URL
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-app.include_router(analyze.router)
+app.include_router(fridge_router)
+app.include_router(dish_router)  # Now works with full path in dish.py
 
 @app.get("/")
 def home():
-    return {"message": "FridgeNutri AI backend running! Go to /docs"}
+    return {"message": "Backend running! Endpoints: /analyze, /analyze-dish"}

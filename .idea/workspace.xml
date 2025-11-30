@@ -4,14 +4,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d2219287-b6e2-4e30-a8da-8162741412b7" name="Changes" comment="implement drag and drop">
+    <list default="true" id="d2219287-b6e2-4e30-a8da-8162741412b7" name="Changes" comment="add ChatBot component">
+      <change afterPath="$PROJECT_DIR$/backend/routes/dish.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/services/dish_vision.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/services/prices.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/services/shopping_list.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fridgenutri-ai/src/components/DishToShop/AnalyzedDishView.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fridgenutri-ai/src/components/DishToShop/DishChatbot.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fridgenutri-ai/src/components/DishToShop/DishPhoto.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fridgenutri-ai/src/components/DishToShop/RecipeDetails.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fridgenutri-ai/src/components/DishToShop/ShoppingListGrid.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fridgenutri-ai/src/components/DishToShop/UploadForm.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fridgenutri-ai/src/app/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/fridgenutri-ai/src/app/page.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fridgenutri-ai/src/components/Chatbot/Chatbot.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/fridgenutri-ai/src/components/Chatbot/Chatbot.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fridgenutri-ai/src/components/HomeScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/fridgenutri-ai/src/components/HomeScreen.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JSX File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -41,28 +61,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Alex",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "actions.on.save",
-    "ts.external.directory.path": "/Applications/WebStorm.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Alex&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Applications/WebStorm.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "ChangesTree.GroupingKeys": [
-      "repository"
+  &quot;keyToStringList&quot;: {
+    &quot;ChangesTree.GroupingKeys&quot;: [
+      &quot;repository&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Aleksandr\WebstormProjects\FridgeNutri-AI\fridgenutri-ai\src" />
@@ -120,23 +140,7 @@
       <option name="project" value="LOCAL" />
       <updated>1764458315752</updated>
     </task>
-    <task id="LOCAL-00005" summary="add chatBot to main menu">
-      <option name="closed" value="true" />
-      <created>1764458933932</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1764458933932</updated>
-    </task>
-    <task id="LOCAL-00006" summary="implement drag and drop">
-      <option name="closed" value="true" />
-      <created>1764459807256</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1764459807256</updated>
-    </task>
-    <option name="localTasksCounter" value="7" />
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -146,8 +150,6 @@
     <MESSAGE value="project setup" />
     <MESSAGE value="updated structure" />
     <MESSAGE value="add ChatBot component" />
-    <MESSAGE value="add chatBot to main menu" />
-    <MESSAGE value="implement drag and drop" />
-    <option name="LAST_COMMIT_MESSAGE" value="implement drag and drop" />
+    <option name="LAST_COMMIT_MESSAGE" value="add ChatBot component" />
   </component>
 </project>
