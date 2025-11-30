@@ -1,8 +1,8 @@
 'use client'
 import { useState, useEffect } from 'react'
 import AuthScreen from '@/components/auth/AuthScreen'
-import HomeScreen from '@/components/HomeScreen'
-import Chatbot from "@/components/Chatbot";
+import HomeScreen from "@/components/HomeScreen";
+import Chatbot from "@/components/Chatbot/Chatbot";
 
 export default function Home() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -24,5 +24,5 @@ export default function Home() {
     return <AuthScreen onComplete={handleAuthComplete} />
   }
   
-  return <Chatbot userData={userData} />
+  return <HomeScreen userData={userData} />
 }
