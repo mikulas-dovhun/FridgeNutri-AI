@@ -1,6 +1,7 @@
 from fastapi import APIRouter, File, UploadFile
 from services.vision import analyze_fridge_image, analyze_dish_image
 from services.recipes import calculate_gaps
+from services.alternative import suggest_healthier_alternatives
 
 router = APIRouter()
 
@@ -20,3 +21,9 @@ async def analyze_dish(file: UploadFile = File(...)):
     contents = await file.read()
     last_dish = await analyze_dish_image(contents)
     return last_dish
+
+@router.post("/api/alternative")
+async def alternative_suggestion(file: UploadFile = File(...)):
+    image_bytes = await file.read()
+    result = await suggest_healthier_alternatives(image_bytes)
+    return result
