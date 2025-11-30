@@ -6,10 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d2219287-b6e2-4e30-a8da-8162741412b7" name="Changes" comment="correct dish analyzer endpoint logic">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/services/recipes.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/recipes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/services/vision.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/vision.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fridgenutri-ai/src/components/Chatbot/Chatbot.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/fridgenutri-ai/src/components/Chatbot/Chatbot.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fridgenutri-ai/src/components/Chatbot/RecipesBranch.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/fridgenutri-ai/src/components/Chatbot/RecipesBranch.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fridgenutri-ai/src/components/ProgressScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/fridgenutri-ai/src/components/ProgressScreen.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,12 +35,12 @@
     &quot;assignee&quot;: &quot;mikulas-dovhun&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/mikulas-dovhun/FridgeNutri-AI.git",
-    "accountId": "dd31853a-d273-4c4e-b018-89445c11eac9"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/mikulas-dovhun/FridgeNutri-AI.git&quot;,
+    &quot;accountId&quot;: &quot;dd31853a-d273-4c4e-b018-89445c11eac9&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -76,6 +73,9 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\brain\WebstormProjects\FridgeNutri-AI\fridgenutri-ai\src\components\Chatbot" />
+      <recent name="C:\Users\brain\WebstormProjects\FridgeNutri-AI\fridgenutri-ai\src\components\Chatbot\hooks" />
+      <recent name="C:\Users\brain\WebstormProjects\FridgeNutri-AI\fridgenutri-ai\src\components" />
       <recent name="C:\Users\Aleksandr\WebstormProjects\FridgeNutri-AI\fridgenutri-ai\src" />
       <recent name="C:\Users\Aleksandr\WebstormProjects\FridgeNutri-AI\fridgenutri-ai\src\components\Chatbot" />
     </key>
@@ -99,6 +99,7 @@
       <workItem from="1764425158628" duration="24000" />
       <workItem from="1764425190563" duration="631000" />
       <workItem from="1764473182556" duration="5650000" />
+      <workItem from="1764494719692" duration="2863000" />
     </task>
     <task id="LOCAL-00001" summary="project setup">
       <option name="closed" value="true" />
@@ -148,7 +149,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764490418018</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="correct dish analyzer endpoint logic">
+      <option name="closed" value="true" />
+      <created>1764494103035</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1764494103035</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -40,7 +40,7 @@ async def analyze_fridge_image(image_bytes: bytes) -> dict:
                   "name": "Creamy Chicken Pasta",
                   "ingredients_used": ["chicken thighs 600g", "milk 400ml", "cheese 150g", "tomatoes 4"],
                   "instructions": "1. Cook chicken. 2. Make creamy sauce with milk and cheese. 3. Add tomatoes.",
-                  "macros": {"calories": 720, "protein": 68, "carbs": 48, "fat": 32},
+                  "macros": {"calories": 720, "protein": 68, "carbs": 48, "fat": 32, "sugar_g": 10},
                   "micronutrients": {"vitamin_A_mg": 0.3, "vitamin_B6_mg": 0.5, "vitamin_B12_mg": 0.001, "vitamin_C_mg": 85,
                   "vitamin_D_mg": 0.01, "vitamin_E_mg": 5, "fiber_g": 8, "calcium_mg": 400, "magnesium_mg": 120, "iron_mg": 4, "zinc_mg": 3, "potassium_mg": 900
 }
@@ -49,7 +49,7 @@ async def analyze_fridge_image(image_bytes: bytes) -> dict:
                   "name": "Broccoli & Cheese Frittata",
                   "ingredients_used": ["eggs 8", "broccoli 2 heads", "cheese 150g", "bell peppers 2"],
                   "instructions": "1. Whisk eggs. 2. Add chopped veggies and cheese. 3. Bake 20 min.",
-                  "macros": {"calories": 580, "protein": 48, "carbs": 22, "fat": 38},
+                  "macros": {"calories": 580, "protein": 48, "carbs": 22, "fat": 38, "sugar_g": 10},
                   "micronutrients": {"vitamin_A_mg": 0.3, "vitamin_B6_mg": 0.5, "vitamin_B12_mg": 0.001, "vitamin_C_mg": 85,
                   "vitamin_D_mg": 0.01, "vitamin_E_mg": 5, "fiber_g": 8, "calcium_mg": 400, "magnesium_mg": 120, "iron_mg": 4, "zinc_mg": 3, "potassium_mg": 900
                 }
