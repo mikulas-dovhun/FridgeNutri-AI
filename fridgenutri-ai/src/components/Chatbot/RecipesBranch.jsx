@@ -1,29 +1,46 @@
 // src/components/Chatbot/RecipesBranch.jsx
 import { Plus, Check } from 'lucide-react';
+import {useState} from "react";
 
 function RecipeCard({ recipe, isChosen, onAdd }) {
-    console.log(recipe.macros)
+    const [copyIsChosen, setCopyIsChosen] = useState(false)
 
     return (
         <div className="bg-white/5 border border-white/15 rounded-2xl p-6 backdrop-blur hover:bg-white/10 transition-all">
             <div className="flex items-start justify-between mb-4">
                 <h3 className="text-white text-xl font-bold">{recipe.name}</h3>
+
                 <button
-                    onClick={onAdd}
+                    onClick={() => {
+                        setCopyIsChosen(true)
+                        onAdd()
+                    }}
                     className={`p-3 rounded-full transition-all ${
-                        isChosen ? 'bg-emerald-600 text-white' : 'bg-white/10 hover:bg-white/20 text-gray-300'
+                        (isChosen || copyIsChosen )
+                            ? 'bg-emerald-600 text-white'
+                            : 'bg-white/10 hover:bg-white/20 text-gray-300'
                     }`}
                 >
-                    {isChosen ? <Check className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
+                    {(copyIsChosen || isChosen) ? (
+                        <Check className="w-5 h-5" />
+                    ) : (
+                        <Plus className="w-5 h-5" />
+                    )}
                 </button>
             </div>
-            <p className="text-gray-300 text-sm mb-4 line-clamp-3">{recipe.instructions}</p>
+
+            <p className="text-gray-300 text-sm mb-4 line-clamp-3">
+                {recipe.instructions}
+            </p>
+
             <div className="text-xs text-yellow-400 font-medium">
-                {recipe.macros.calories} ccal • {recipe.macros.protein}g protein • {recipe.macros.fat}g fat • {recipe.macros.carbs}g carbs
+                {recipe.macros.calories} ccal • {recipe.macros.protein}g protein •{' '}
+                {recipe.macros.fat}g fat • {recipe.macros.carbs}g carbs
             </div>
         </div>
     );
 }
+
 
 export default function RecipesBranch({ recipes, chosenRecipes, onAddRecipe }) {
     const chosenNames = new Set(chosenRecipes.map(r => r.name));

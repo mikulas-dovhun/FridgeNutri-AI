@@ -1,19 +1,22 @@
 'use client'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Home, Utensils, ShoppingBag, User, Camera } from 'lucide-react'
+import { Home, Utensils, ShoppingBag, User, ChartLine } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import GlassCard from './ui/GlassCard'
 import ProfileScreen from './ProfileScreen'
 import Chatbot from "@/components/Chatbot/Chatbot";
-import DishChatbot from '@/components/DishToShop/DishChatbot';
+import ProgressScreen from "@/components/ProgressScreen";
+import DishChatbot from "@/components/DishToShop/DishChatbot";
 
 const tabs = [
-  { id: 'home', label: 'Home', icon: Home, active: true },
-  { id: 'meals', label: 'Meals', icon: Utensils },
-  { id: 'groceries', label: 'Groceries', icon: ShoppingBag },
-  { id: 'profile', label: 'Profile', icon: User }
+    { id: 'home', label: 'Home', icon: Home, active: true },
+    { id: 'meals', label: 'Meals', icon: Utensils },
+    { id: 'groceries', label: 'Groceries', icon: ShoppingBag },
+    { id: 'progress', label: 'Progress', icon: ChartLine },  // ⭐ NEW TAB
+    { id: 'profile', label: 'Profile', icon: User }
 ]
+
 
 export default function HomeScreen({ userData }) {
   const [activeTab, setActiveTab] = useState('home')
@@ -169,18 +172,28 @@ export default function HomeScreen({ userData }) {
         return renderHomeContent()
       case 'meals':
         return (
-          <Chatbot userData={userData}></Chatbot>
+          <Chatbot userData={userData} />
         )
       case 'groceries':
         return (
-          <DishChatbot userData={userData}></DishChatbot>
+          <DishChatbot userData={userData} />
         )
       case 'profile':
         return <ProfileScreen userData={userData} onLogout={() => {
           localStorage.removeItem('fridgeNutriUser')
           window.location.reload()
         }} />
-      default:
+        case 'progress':
+            const saved = JSON.parse(localStorage.getItem('chatbot_days')) || [];
+
+            // Convert date strings → Date objects
+            const revivedDays = saved.map(d => ({
+                ...d,
+                date: new Date(d.date)
+            }));
+
+            return <ProgressScreen days={revivedDays} />;
+        default:
         return renderHomeContent()
     }
   }
@@ -207,7 +220,7 @@ export default function HomeScreen({ userData }) {
         className="fixed bottom-0 left-0 right-0 bg-white/10 backdrop-blur-3xl border-t border-white/20 z-50"
       >
         <div className="max-w-4xl mx-auto px-6 py-4">
-          <div className="grid grid-cols-4 gap-1">
+          <div className="grid grid-cols-5 gap-1">
             {tabs.map((tab) => {
               const Icon = tab.icon
               return (

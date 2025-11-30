@@ -35,7 +35,7 @@ export default function ShoppingListGrid({ shoppingList }) {
               </div>
               <div className="text-right">
                 <div className="text-xl font-bold text-emerald-400">
-                  {item.price && item.price !== "—" ? item.price : "—"}
+                  {item.price && item.price !== "—" ? item.price + " eur": "—"}
                 </div>
                 <div className="text-xs text-gray-400">{item.store || ""}</div>
               </div>

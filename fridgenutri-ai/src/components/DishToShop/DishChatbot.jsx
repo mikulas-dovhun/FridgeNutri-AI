@@ -8,6 +8,7 @@ import AnalyzedDishView from './AnalyzedDishView';
 import { useSwipe } from '../Chatbot/hooks/useSwipe';
 import { User } from 'lucide-react';
 
+
 const STORAGE_KEY = 'dishtoshop_days';
 const STORAGE_INDEX = 'dishtoshop_current_index';
 
@@ -85,7 +86,7 @@ export default function DishChatbot() {
     fd.append('file', file);
     
     try {
-      const res = await fetch('http://localhost:8000/analyze-dish', { method: 'POST', body: fd });
+      const res = await fetch('http://localhost:8000/analyze/dish', { method: 'POST', body: fd });
       const data = await res.json();
       if (data.error) throw new Error(data.error);
       
@@ -114,9 +115,6 @@ export default function DishChatbot() {
           onSwitchDay={switchDay}
           onAddDay={addDay}
         />
-        <button className="p-3 rounded-full bg-white/10 hover:bg-white/20 transition">
-          <User className="w-5 h-5" />
-        </button>
       </header>
       
       <main className="flex-1 overflow-y-auto">
