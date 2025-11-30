@@ -12,6 +12,41 @@ import { RotateCcw } from 'lucide-react';
 const STORAGE_KEY_DAYS = 'chatbot_days';
 const STORAGE_KEY_IDX = 'chatbot_current_day_index';
 
+const MICRO_KEYS = [
+    'vitamin_A_mg',
+    'vitamin_B6_mg',
+    'vitamin_B12_mg',
+    'vitamin_C_mg',
+    'vitamin_D_mg',
+    'vitamin_E_mg',
+    'fiber_g',
+    'calcium_mg',
+    'magnesium_mg',
+    'iron_mg',
+    'zinc_mg',
+    'potassium_mg',
+];
+
+const EMPTY_TOTALS = {
+    calories: 0,
+    protein: 0,
+    carbs: 0,
+    fat: 0,
+
+    vitamin_A_mg: 0,
+    vitamin_B6_mg: 0,
+    vitamin_B12_mg: 0,
+    vitamin_C_mg: 0,
+    vitamin_D_mg: 0,
+    vitamin_E_mg: 0,
+    fiber_g: 0,
+    calcium_mg: 0,
+    magnesium_mg: 0,
+    iron_mg: 0,
+    zinc_mg: 0,
+    potassium_mg: 0,
+};
+
 export default function Chatbot() {
     // ------------- load initial data and revive dates + totals --------------
     const loadInitialData = () => {
@@ -23,7 +58,7 @@ export default function Chatbot() {
                 const revived = parsed.map(d => ({
                     ...d,
                     date: d.date ? new Date(d.date) : new Date(),
-                    totals: d.totals || { calories: 0, protein: 0, carbs: 0, fat: 0 },
+                    totals: d.totals || { ...EMPTY_TOTALS },
                     chosenRecipes: d.chosenRecipes || [],
                 }));
                 return { days: revived, index: savedIndex ? parseInt(savedIndex, 10) : 0 };
@@ -34,7 +69,7 @@ export default function Chatbot() {
 
         const fresh = generateInitialDays().map(d => ({
             ...d,
-            totals: { calories: 0, protein: 0, carbs: 0, fat: 0 },
+            totals: { ...EMPTY_TOTALS },
             chosenRecipes: [],
         }));
 
@@ -158,7 +193,7 @@ export default function Chatbot() {
                 photoUrl: null,
                 analysis: null,
                 chosenRecipes: [],
-                totals: { calories: 0, protein: 0, carbs: 0, fat: 0 },
+                totals: { ...EMPTY_TOTALS },
             };
             return copy;
         });
@@ -176,21 +211,30 @@ export default function Chatbot() {
                 day.chosenRecipes = [...(day.chosenRecipes || []), recipe];
             }
 
-            // recompute totals from chosenRecipes
+            // пересчитываем totals с учётом МАКРО + МИКРО
             const totals = (day.chosenRecipes || []).reduce((acc, r) => {
                 const m = r.macros || r.macro || {};
+                const micro = r.micronutrients || {};
+
+                // макро
                 acc.calories += Number(m.calories || 0);
-                acc.protein += Number(m.protein || 0);
-                acc.carbs += Number(m.carbs || 0);
-                acc.fat += Number(m.fat || 0);
+                acc.protein  += Number(m.protein  || 0);
+                acc.carbs    += Number(m.carbs    || 0);
+                acc.fat      += Number(m.fat      || 0);
+
+                // микро
+                MICRO_KEYS.forEach((key) => {
+                    acc[key] += Number(micro[key] || 0);
+                });
+
                 return acc;
-            }, { calories: 0, protein: 0, carbs: 0, fat: 0 });
+            }, { ...EMPTY_TOTALS });
 
             day.totals = totals;
-
             return copy;
         });
     };
+
 
     const removeRecipe = (name) => {
         setDays(prev => {
@@ -201,12 +245,19 @@ export default function Chatbot() {
             // recompute totals
             const totals = (day.chosenRecipes || []).reduce((acc, r) => {
                 const m = r.macros || r.macro || {};
+                const micro = r.micronutrients || {};
+
                 acc.calories += Number(m.calories || 0);
-                acc.protein += Number(m.protein || 0);
-                acc.carbs += Number(m.carbs || 0);
-                acc.fat += Number(m.fat || 0);
+                acc.protein  += Number(m.protein  || 0);
+                acc.carbs    += Number(m.carbs    || 0);
+                acc.fat      += Number(m.fat      || 0);
+
+                MICRO_KEYS.forEach((key) => {
+                    acc[key] += Number(micro[key] || 0);
+                });
+
                 return acc;
-            }, { calories: 0, protein: 0, carbs: 0, fat: 0 });
+            }, { ...EMPTY_TOTALS });
 
             day.totals = totals;
             return copy;

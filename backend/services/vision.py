@@ -41,24 +41,29 @@ async def analyze_fridge_image(image_bytes: bytes) -> dict:
                   "ingredients_used": ["chicken thighs 600g", "milk 400ml", "cheese 150g", "tomatoes 4"],
                   "instructions": "1. Cook chicken. 2. Make creamy sauce with milk and cheese. 3. Add tomatoes.",
                   "macros": {"calories": 720, "protein": 68, "carbs": 48, "fat": 32},
-                  "micronutrients": {"vitamin_C_mg": 85, "iron_mg": 5.2, "calcium_mg": 620}
+                  "micronutrients": {"vitamin_A_mg": 0.3, "vitamin_B6_mg": 0.5, "vitamin_B12_mg": 0.001, "vitamin_C_mg": 85,
+                  "vitamin_D_mg": 0.01, "vitamin_E_mg": 5, "fiber_g": 8, "calcium_mg": 400, "magnesium_mg": 120, "iron_mg": 4, "zinc_mg": 3, "potassium_mg": 900
+}
                 },
                 {
                   "name": "Broccoli & Cheese Frittata",
                   "ingredients_used": ["eggs 8", "broccoli 2 heads", "cheese 150g", "bell peppers 2"],
                   "instructions": "1. Whisk eggs. 2. Add chopped veggies and cheese. 3. Bake 20 min.",
                   "macros": {"calories": 580, "protein": 48, "carbs": 22, "fat": 38},
-                  "micronutrients": {"vitamin_C_mg": 180, "iron_mg": 6.1, "calcium_mg": 720}
+                  "micronutrients": {"vitamin_A_mg": 0.3, "vitamin_B6_mg": 0.5, "vitamin_B12_mg": 0.001, "vitamin_C_mg": 85,
+                  "vitamin_D_mg": 0.01, "vitamin_E_mg": 5, "fiber_g": 8, "calcium_mg": 400, "magnesium_mg": 120, "iron_mg": 4, "zinc_mg": 3, "potassium_mg": 900
                 }
               ],
               "shopping_suggestions": ["pasta", "olive oil", "garlic", "onions", "herbs"]
             }
             
-            RULES:
-            - List EVERY visible food item with realistic quantity
-            - Create 5–12 realistic recipes using only what you see
-            - NEVER return empty arrays unless the fridge is truly empty
-            - Only valid JSON, nothing else
+                "RULES:
+                - List EVERY visible food item with realistic quantity
+                - Create 5–12 realistic recipes using only what you see
+                - NEVER return empty arrays unless the fridge is truly empty
+                - For EVERY recipe, ALWAYS include both 'macros' and 'micronutrients' with numeric values.
+                - Use ONLY these micronutrient keys: vitamin_A_mg, vitamin_B6_mg, vitamin_B12_mg, vitamin_C_mg, vitamin_D_mg, vitamin_E_mg, fiber_g, calcium_mg, magnesium_mg, iron_mg, zinc_mg, potassium_mg.
+                - Only valid JSON, nothing else"
             """},
                 {"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{base64_image}"}}
             ]}
