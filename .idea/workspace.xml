@@ -4,23 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d2219287-b6e2-4e30-a8da-8162741412b7" name="Changes" comment="add ChatBot component">
-      <change afterPath="$PROJECT_DIR$/backend/routes/dish.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/services/dish_vision.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/services/prices.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/services/shopping_list.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fridgenutri-ai/src/components/DishToShop/AnalyzedDishView.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fridgenutri-ai/src/components/DishToShop/DishChatbot.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fridgenutri-ai/src/components/DishToShop/DishPhoto.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fridgenutri-ai/src/components/DishToShop/RecipeDetails.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fridgenutri-ai/src/components/DishToShop/ShoppingListGrid.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fridgenutri-ai/src/components/DishToShop/UploadForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fridgenutri-ai/src/app/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/fridgenutri-ai/src/app/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fridgenutri-ai/src/components/Chatbot/Chatbot.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/fridgenutri-ai/src/components/Chatbot/Chatbot.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fridgenutri-ai/src/components/HomeScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/fridgenutri-ai/src/components/HomeScreen.jsx" afterDir="false" />
-    </list>
+    <list default="true" id="d2219287-b6e2-4e30-a8da-8162741412b7" name="Changes" comment="added not fully implemented grocery feature" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -140,7 +124,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764458315752</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="added not fully implemented grocery feature">
+      <option name="closed" value="true" />
+      <created>1764465003462</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1764465003462</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -150,6 +142,7 @@
     <MESSAGE value="project setup" />
     <MESSAGE value="updated structure" />
     <MESSAGE value="add ChatBot component" />
-    <option name="LAST_COMMIT_MESSAGE" value="add ChatBot component" />
+    <MESSAGE value="added not fully implemented grocery feature" />
+    <option name="LAST_COMMIT_MESSAGE" value="added not fully implemented grocery feature" />
   </component>
 </project>
