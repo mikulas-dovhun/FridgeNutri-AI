@@ -6,17 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d2219287-b6e2-4e30-a8da-8162741412b7" name="Changes" comment="correct dish analyzer endpoint logic">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fridgenutri-ai/src/components/Chatbot/AlternativesBranch.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fridgenutri-ai/src/components/Chatbot/AnalyzedBoard.jsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/fridgenutri-ai/src/components/Chatbot/AnalyzedView.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/fridgenutri-ai/src/components/Chatbot/AnalyzedView.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fridgenutri-ai/src/components/Chatbot/Chatbot.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/fridgenutri-ai/src/components/Chatbot/Chatbot.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fridgenutri-ai/src/components/Chatbot/DailyAnalytics.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fridgenutri-ai/src/components/Chatbot/RecipeModal.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fridgenutri-ai/src/components/Chatbot/RecipesBranch.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/fridgenutri-ai/src/components/Chatbot/RecipesBranch.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fridgenutri-ai/src/components/DishToShop/DishChatbot.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/fridgenutri-ai/src/components/DishToShop/DishChatbot.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fridgenutri-ai/src/components/DishToShop/RecipeDetails.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/fridgenutri-ai/src/components/DishToShop/RecipeDetails.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fridgenutri-ai/src/components/HomeScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/fridgenutri-ai/src/components/HomeScreen.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fridgenutri-ai/src/components/ProgressScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/fridgenutri-ai/src/components/ProgressScreen.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +23,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="Artem" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -44,12 +34,12 @@
     &quot;assignee&quot;: &quot;mikulas-dovhun&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/mikulas-dovhun/FridgeNutri-AI.git&quot;,
-    &quot;accountId&quot;: &quot;de25ed4a-9461-464a-9226-1bee5c5e4c46&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/mikulas-dovhun/FridgeNutri-AI.git",
+    "accountId": "dd31853a-d273-4c4e-b018-89445c11eac9"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
