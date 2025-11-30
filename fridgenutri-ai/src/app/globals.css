@@ -1,5 +1,19 @@
 @import "tailwindcss";
 
+
+* {
+    -webkit-user-select: none;   /* Chrome, Safari, newer Edge */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* Old IE */
+    user-select: none;
+    -webkit-tap-highlight-color: transparent; /* removes blue flash on mobile */
+}
+
+/* But allow selection in inputs if needed later */
+input, textarea {
+    user-select: auto;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
