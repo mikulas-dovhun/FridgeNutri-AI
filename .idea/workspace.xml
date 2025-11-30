@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d2219287-b6e2-4e30-a8da-8162741412b7" name="Changes" comment="correct dish analyzer endpoint logic">
+    <list default="true" id="d2219287-b6e2-4e30-a8da-8162741412b7" name="Changes" comment="added alternatives feature">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/analyze.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/analyze.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fridgenutri-ai/src/components/HomeScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/fridgenutri-ai/src/components/HomeScreen.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fridgenutri-ai/src/components/AlternativesScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/fridgenutri-ai/src/components/AlternativesScreen.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +96,7 @@
       <workItem from="1764425158628" duration="24000" />
       <workItem from="1764425190563" duration="631000" />
       <workItem from="1764473182556" duration="5650000" />
-      <workItem from="1764494886740" duration="2623000" />
+      <workItem from="1764494886740" duration="3560000" />
     </task>
     <task id="LOCAL-00001" summary="project setup">
       <option name="closed" value="true" />
@@ -147,7 +146,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764490418018</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="added alternatives feature">
+      <option name="closed" value="true" />
+      <created>1764497618197</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1764497618197</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -158,6 +165,7 @@
     <MESSAGE value="updated structure" />
     <MESSAGE value="add ChatBot component" />
     <MESSAGE value="correct dish analyzer endpoint logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="correct dish analyzer endpoint logic" />
+    <MESSAGE value="added alternatives feature" />
+    <option name="LAST_COMMIT_MESSAGE" value="added alternatives feature" />
   </component>
 </project>
