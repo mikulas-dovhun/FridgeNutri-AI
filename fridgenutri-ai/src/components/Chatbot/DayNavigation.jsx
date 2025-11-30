@@ -1,27 +1,36 @@
 // src/components/Chatbot/DayNavigation.jsx
-import { Plus } from 'lucide-react';
-import { cn } from '@/lib/utils';
+"use client";
 
-export default function DayNavigation({ days, currentDayIndex, onSwitchDay, onAddDay }) {
+export default function DayNavigation({
+                                          days,
+                                          currentDayIndex,
+                                          onSwitchDay,
+                                          onAddDay,
+                                          onDeleteDay
+                                      }) {
     return (
-        <div className="flex items-center gap-2 select-none">
-            {days.map((day, idx) => (
+        <div className="flex items-center gap-3 overflow-x-auto no-scrollbar py-2">
+            {days.map((day, index) => (
                 <button
                     key={day.id}
-                    onClick={() => onSwitchDay(idx)}
-                    className={cn(
-                        'px-3 py-1 rounded-full text-xs font-medium flex flex-col items-center min-w-[52px]',
-                        idx === currentDayIndex
-                            ? 'bg-blue-500 text-white shadow'
-                            : 'bg-white/10 text-gray-200 hover:bg-white/20',
-                    )}
+                    onClick={() => onDeleteDay(index)}
+                    className={`
+                        px-4 py-2 rounded-xl whitespace-nowrap border
+                        ${index === currentDayIndex
+                        ? "bg-purple-600 text-white border-purple-400"
+                        : "bg-white/10 text-white/70 border-white/20 hover:bg-white/20"
+                    }
+                    `}
                 >
-                    <span className="text-[10px] opacity-80">{day.weekday}</span>
-                    <span className="text-sm font-semibold leading-none">{day.dayNumber}</span>
+                    {day.weekday} {day.dayNumber}
                 </button>
             ))}
-            <button onClick={onAddDay} className="ml-1 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white">
-                <Plus className="w-4 h-4" />
+
+            <button
+                onClick={onAddDay}
+                className="px-4 py-2 rounded-xl bg-green-600 text-white border border-green-400 hover:bg-green-700"
+            >
+                +
             </button>
         </div>
     );

@@ -126,6 +126,28 @@ export default function Chatbot() {
         }
     };
 
+    const deleteDay = (index) => {
+        if (!confirm("Delete this day?")) return;
+
+        setDays(prev => {
+            if (prev.length === 1) {
+                alert("You cannot delete the last remaining day.");
+                return prev;
+            }
+
+            const updated = prev.filter((_, i) => i !== index);
+
+            // fix current index if necessary
+            if (currentDayIndex >= updated.length) {
+                setCurrentDayIndex(updated.length - 1);
+            } else if (index < currentDayIndex) {
+                setCurrentDayIndex(i => i - 1);
+            }
+
+            return updated;
+        });
+    };
+
     // ------------- reset current day -------------
     const resetDay = () => {
         if (!confirm("Clear today's fridge analysis and totals?")) return;
@@ -209,6 +231,7 @@ export default function Chatbot() {
                     currentDayIndex={currentDayIndex}
                     onSwitchDay={setCurrentDayIndex}
                     onAddDay={addDay}
+                    onDeleteDay={deleteDay}
                 />
 
                 <div className="flex items-center gap-3">
